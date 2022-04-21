@@ -16,3 +16,6 @@ for row in data['prices']:
     row[0] = timestamp.strftime('%Y-%m-%d')
     clean_data.append(row)
 print(clean_data)
+df = pd.DataFrame(data=clean_data, columns=["Date", "Price"])
+df = df.set_index('Date')
+mean_price = df["Price"].mean()
