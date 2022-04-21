@@ -1,3 +1,4 @@
+# Original Author: Parth Tarak Vaidya, A00456020, MCDA Fall 2021, SMU. Halifax, NS.
 import pandas as pd
 import requests
 import datetime
