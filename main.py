@@ -1,4 +1,6 @@
-# Original Author: Parth Tarak Vaidya, A00456020, MCDA Fall 2021, SMU. Halifax, NS.
+# Original Author: Parth Tarak Vaidya, A00456020, MCDA Fall 2021, SMU, Halifax, NS.
+# This app is intended as a submission for MCDA 5580 Data and Text Mining assignment.
+# Please do not copy or reuse the code without prior permission.
 import pandas as pd
 import requests
 import datetime
@@ -7,8 +9,10 @@ st.title('Bitcoin prices in various currencies over last few days')
 st.text('App Created by Parth Tarak Vaidya, A00456020, MCDA, SMU, Halifax, NS')
 num_days = st.slider(label="Number of Days", min_value=1, max_value=365, step=1, value=14)
 currency = st.radio(label="Currency", options=('CAD', 'USD', 'INR', 'AUD', 'GBP'))
-API_URL = f'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency={str.lower(currency)}&days={num_days}&interval=daily'
+API_URL = f'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart' \
+          f'?vs_currency={str.lower(currency)}&days={num_days}&interval=daily'
 req = requests.get(API_URL)
+data = dict()
 if req.status_code == 200:
     data = req.json()
 clean_data = list()
@@ -24,3 +28,6 @@ st.text(f'The Average Price for bitcoin during the interval is')
 st.subheader(f'{currency} {round(mean_price,2)}')
 st.subheader('Line Chart of Bitcoin Prices')
 st.line_chart(df, width=350, use_container_width=True)
+
+# The End
+# Created by: Parth Tarak Vaidya, A00456020, MCDA Fall 2021, SMU, Halifax, NS.
